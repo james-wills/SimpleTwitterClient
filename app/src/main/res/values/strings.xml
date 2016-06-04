@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string name="app_name">Simple Twitter Client</string>
+  <string name="login_label">Connect to twitter</string>
+
+  <string name="followers">FOLLOWERS</string>
+  <string name="following">FOLLOWING</string>
+  <string name="tweets">Tweets</string>
+  <string name="media">Media</string>
+  <string name="likes">Likes</string>
+  <string name="retweet">Retweet</string>
+  <string name="retweeted_by">%s Retweeted</string>
+
+  <string name="example_tweet">Dancing to Controlla is hard work! - someone who never been on the dance floor for mr vegas - bruk it down</string>
+  <string name="example_bio">Mother. Teacher. Author. Journalist. Shoplifter. Don\'t @ me or I\'ll call the police.</string>
+  <string name="example_bio2">Homeschooler genius, Nintendo Master</string>
+  <string name="example_location">The bay area</string>
+  <string name="example_username">\@KasaiREX</string>
+  <string name="example_name">Harold</string>
+  <string name="example_url">twitch.tv/nintendoharold</string>
+
+
+</resources>

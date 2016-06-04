@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_margin="@dimen/zerodp">
+
+  <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="fill_parent"
+             android:layout_height="@dimen/tweet_image_height"
+             android:id="@+id/tweet_1"
+             android:src="@drawable/placeholder_tweet_1"
+             android:scaleType="centerCrop"/>
+</LinearLayout>

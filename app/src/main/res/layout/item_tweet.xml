@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/base_padding">
+
+  <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:id="@+id/retweetLayout"
+    android:layout_toRightOf="@+id/ivProfileImage"
+    android:layout_toEndOf="@+id/ivProfileImage">
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="#1 Bird Dad Retweeted"
+      android:id="@+id/tvRetweetText"
+      style="@style/text_username"
+      android:layout_alignParentTop="true"
+      android:layout_toRightOf="@+id/ivRetweetIcon"
+      android:layout_toEndOf="@+id/ivRetweetIcon"
+      android:layout_marginLeft="@dimen/small_padding"/>
+
+    <ImageView
+      android:layout_width="14dp"
+      android:layout_height="14dp"
+      android:id="@+id/ivRetweetIcon"
+      android:layout_alignParentTop="true"
+      android:layout_alignParentLeft="true"
+      android:src="@drawable/twitter_retweet"/>
+  </RelativeLayout>
+
+  <ImageView
+    android:layout_width="@dimen/avi_width_and_height"
+    android:layout_height="@dimen/avi_width_and_height"
+    android:id="@+id/ivProfileImage"
+    android:layout_below="@id/retweetLayout"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:layout_marginRight="@dimen/base_padding"
+    />
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Name"
+    android:id="@+id/tvName"
+    android:layout_below="@id/retweetLayout"
+    android:layout_toRightOf="@+id/ivProfileImage"
+    android:layout_toEndOf="@+id/ivProfileImage"
+    style="@style/text_name"
+    tools:text="This. Is. My. Name."/>
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/tvScreenName"
+    android:layout_below="@id/retweetLayout"
+    android:layout_toRightOf="@+id/tvName"
+    android:layout_toEndOf="@+id/tvName"
+    style="@style/text_username"
+    tools:text="\@ExampleUsername"
+    android:layout_marginLeft="@dimen/small_padding"/>
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/tvTweetText"
+    android:layout_below="@+id/tvScreenName"
+    android:layout_toRightOf="@+id/ivProfileImage"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentEnd="true"
+    android:linksClickable="true"
+    style="@style/text_tweet"
+    tools:text="Dancing to Controlla is hard work! - someone who never been on the dance floor for mr vegas - bruk it down"/>
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_below="@+id/tvTweetText"
+    android:id="@+id/llImages"
+    android:layout_alignLeft="@+id/tvTweetText"
+    android:layout_alignStart="@+id/tvTweetText">
+  </LinearLayout>
+  <FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/flTweetImages1" />
+
+  <FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/flTweetImages2" />
+
+  <FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/flTweetImages3" />
+
+  <FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/flTweetImages4" />
+
+
+</RelativeLayout>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:id="@+id/header"
+  android:clipChildren="false"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  >
+
+  <ImageView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/ivBannerImage"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentEnd="true"
+    android:src="@drawable/banner_placeholder"
+    android:scaleType="centerCrop"
+    />
+
+  <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/ivBannerImage"
+    android:clipChildren="false"
+    android:layout_margin="@dimen/base_padding"
+    android:id="@+id/rlProfileLayout">
+
+    <ImageView
+      android:layout_width="@dimen/avi_size"
+      android:layout_height="@dimen/avi_size"
+      android:id="@+id/ivUserAvi"
+      android:src="@drawable/avi_placeholder"
+      android:layout_alignParentLeft="true"
+      android:layout_alignParentStart="true"
+      android:layout_marginTop="@dimen/avi_overlap"
+      />
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/example_name"
+      android:id="@+id/tvProfileName"
+      android:layout_below="@+id/ivUserAvi"
+      android:layout_alignParentLeft="true"
+      android:layout_alignParentStart="true"
+      android:layout_marginTop="@dimen/base_padding"
+      style="@style/text_name"/>
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/example_username"
+      android:id="@+id/tvProfileScreenName"
+      android:layout_below="@+id/tvProfileName"
+      android:layout_alignParentLeft="true"
+      android:layout_alignParentStart="true"
+      style="@style/text_username"/>
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/example_bio2"
+      android:id="@+id/tvBio"
+      android:layout_below="@+id/tvProfileScreenName"
+      android:layout_alignParentLeft="true"
+      android:layout_alignParentStart="true"
+      android:layout_marginTop="@dimen/base_padding"
+      android:layout_marginBottom="@dimen/base_padding"
+      android:linksClickable="true"
+      style="@style/text_tweet"/>
+
+    <ImageView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/ivLocationIcon"
+      android:layout_below="@+id/tvBio"
+      android:layout_alignParentLeft="true"
+      android:layout_alignParentStart="true"
+      android:layout_alignTop="@+id/tvLocation"
+      android:layout_alignBottom="@+id/tvLocation"
+      android:src="@drawable/ic_location"/>
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/example_location"
+      android:id="@+id/tvLocation"
+      android:layout_below="@+id/tvBio"
+      android:layout_toRightOf="@+id/ivLocationIcon"
+      android:layout_toEndOf="@+id/ivLocationIcon"
+      android:layout_marginLeft="@dimen/small_padding"
+      style="@style/text_very_small"/>
+
+    <ImageView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/ivLinkIcon"
+      android:layout_below="@+id/ivLocationIcon"
+      android:layout_alignParentLeft="true"
+      android:layout_alignParentStart="true"
+      android:src="@drawable/ic_link"/>
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/example_url"
+      android:id="@+id/tvURL"
+      android:layout_alignTop="@+id/ivLinkIcon"
+      android:layout_toRightOf="@+id/ivLinkIcon"
+      android:layout_marginLeft="@dimen/small_padding"
+      android:linksClickable="true"
+      style="@style/text_very_small"/>
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="50"
+      android:id="@+id/tvFollowersCount"
+      android:layout_alignParentBottom="false"
+      android:layout_alignParentLeft="true"
+      style="@style/text_name"
+      android:layout_below="@+id/ivLinkIcon"
+      android:layout_marginTop="@dimen/base_padding"/>
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/followers"
+      android:id="@+id/tvFollowersLabel"
+      android:layout_alignParentBottom="false"
+      android:layout_toRightOf="@+id/tvFollowersCount"
+      style="@style/text_very_small"
+      android:layout_marginLeft="@dimen/small_padding"
+      android:layout_alignTop="@+id/tvFriendsCount"
+      android:gravity="center_vertical"
+      android:layout_alignBottom="@+id/tvFollowersCount"/>
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="12"
+      android:id="@+id/tvFriendsCount"
+      style="@style/text_name"
+      android:layout_alignTop="@+id/tvFollowersCount"
+      android:layout_toRightOf="@+id/tvFollowersLabel"
+      android:layout_toEndOf="@+id/tvFollowersLabel"
+      android:layout_marginLeft="@dimen/base_padding"/>
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/following"
+      android:id="@+id/tvFriendsLabel"
+      android:layout_alignParentBottom="false"
+      android:layout_toRightOf="@+id/tvFriendsCount"
+      style="@style/text_very_small"
+      android:layout_alignTop="@+id/tvFriendsCount"
+      android:gravity="center_vertical"
+      android:layout_marginLeft="@dimen/small_padding"
+      android:layout_alignBottom="@+id/tvFriendsCount"/>
+
+
+  </RelativeLayout>
+
+</RelativeLayout>

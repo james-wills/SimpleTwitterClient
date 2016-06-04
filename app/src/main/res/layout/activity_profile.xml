@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  tools:context="com.codepath.apps.simpletwitterclient.activities.ProfileActivity">
+
+  <android.support.v7.widget.Toolbar
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/profileToolbar"
+    android:theme="@style/ToolbarTheme"
+    android:background="@color/transparent">
+  </android.support.v7.widget.Toolbar>
+
+  <FrameLayout
+    android:id="@+id/headerFragmentLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+  </FrameLayout>
+
+  <View android:id="@+id/spacer"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacer_height"
+        android:layout_below="@+id/headerFragmentLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+    android:background="@color/primary_light">
+  </View>
+
+  <com.astuetz.PagerSlidingTabStrip
+    android:id="@+id/tabStripProfile"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/tab_height"
+    app:pstsShouldExpand="true"
+    app:pstsTextAllCaps="true"
+    app:pstsDividerColor="@color/white"
+    app:pstsIndicatorHeight="@dimen/tab_indicator_height"
+    app:pstsIndicatorColor="@color/primary"
+    app:pstsUnderlineHeight="@dimen/zerodp"
+    android:background="@color/white"
+    android:layout_below="@+id/spacer"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true">
+  </com.astuetz.PagerSlidingTabStrip>
+
+  <android.support.v4.view.ViewPager
+    android:id="@+id/viewPagerProfile"
+    android:layout_below="@+id/tabStripProfile"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+  </android.support.v4.view.ViewPager>
+
+</RelativeLayout>

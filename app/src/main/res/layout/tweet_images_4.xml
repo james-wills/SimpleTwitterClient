@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="@dimen/triple_tweet_image_height"
+              android:layout_margin="@dimen/zerodp">
+
+  <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="0dp"
+             android:layout_height="0dp"
+             app:layout_widthPercent="50%"
+             app:layout_heightPercent="50%"
+             android:paddingBottom="@dimen/image_padding"
+             android:paddingRight="@dimen/image_padding"
+             android:layout_alignParentLeft="true"
+             android:layout_alignParentTop="true"
+             android:id="@+id/tweet_1"
+             android:src="@drawable/placeholder_tweet_1"
+             android:cropToPadding="true"
+             android:scaleType="centerCrop"/>
+
+  <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="0dp"
+             android:layout_height="0dp"
+             app:layout_widthPercent="50%"
+             app:layout_heightPercent="50%"
+             android:paddingLeft="@dimen/image_padding"
+             android:paddingBottom="@dimen/image_padding"
+             android:layout_alignParentRight="true"
+             android:layout_alignParentTop="true"
+             android:id="@+id/tweet_2"
+             android:src="@drawable/placeholder_tweet_2"
+             android:cropToPadding="true"
+             android:scaleType="centerCrop"
+    />
+
+  <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="0dp"
+             android:layout_height="0dp"
+             app:layout_widthPercent="50%"
+             app:layout_heightPercent="50%"
+             android:paddingRight="@dimen/image_padding"
+             android:paddingTop="@dimen/image_padding"
+             android:layout_alignParentLeft="true"
+             android:layout_below="@+id/tweet_1"
+             android:id="@+id/tweet_3"
+             android:src="@drawable/placeholder_tweet_3"
+             android:cropToPadding="true"
+             android:scaleType="centerCrop"/>
+
+  <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="0dp"
+             android:layout_height="0dp"
+             app:layout_widthPercent="50%"
+             app:layout_heightPercent="50%"
+             android:paddingLeft="@dimen/image_padding"
+             android:paddingTop="@dimen/image_padding"
+             android:layout_alignParentRight="true"
+             android:layout_below="@+id/tweet_2"
+             android:id="@+id/tweet_4"
+             android:src="@drawable/placeholder_tweet_4"
+             android:cropToPadding="true"
+             android:scaleType="centerCrop"
+    />
+</android.support.percent.PercentRelativeLayout>

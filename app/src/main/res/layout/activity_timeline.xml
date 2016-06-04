@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".activities.TimelineActivity">
+
+  <android.support.v7.widget.Toolbar
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/toolbar"
+    android:theme="@style/ToolbarTheme"
+    android:background="@color/primary">
+
+  </android.support.v7.widget.Toolbar>
+
+
+  <com.astuetz.PagerSlidingTabStrip
+    android:id="@+id/tabStripHome"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/tab_height"
+    app:pstsShouldExpand="true"
+    app:pstsTextAllCaps="true"
+    app:pstsDividerColor="@color/white"
+    app:pstsIndicatorHeight="@dimen/tab_indicator_height"
+    app:pstsIndicatorColor="@color/primary"
+    android:background="@color/white"
+    android:layout_below="@+id/toolbar"
+    app:pstsUnderlineHeight="@dimen/zerodp"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true">
+  </com.astuetz.PagerSlidingTabStrip>
+
+  <android.support.v4.view.ViewPager
+    android:id="@+id/viewPagerHome"
+    android:layout_below="@+id/tabStripHome"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+  </android.support.v4.view.ViewPager>
+</RelativeLayout>
