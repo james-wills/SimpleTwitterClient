@@ -27,6 +27,8 @@ The following **required** functionality is completed:
 * [x] When a network request is sent, user sees an [indeterminate progress indicator](http://guides.codepath.com/android/Handling-ProgressBars#progress-within-actionbar)
 * [ ] User can **open the twitter app offline and see last loaded tweets**. Persisted in SQLite tweets are refreshed on every application launch. While "live data" is displayed when app can get it from Twitter API, it is also saved for use in an offline mode.
 
+NOTE: I've been unable to get the SQLite caching working properly with my models. My submission won't have that task completed for now, but I'll come back to it tomorrow morning.
+
 The following **optional** features are implemented:
 
 * [ ] User can **click a link within a tweet body** on tweet details view. The click will launch the web browser with relevant page opened.
