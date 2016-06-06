@@ -57,9 +57,26 @@ The following **additional** features are implemented:
 * [x] favorites view on profile screen
 ## Video Walkthrough
 
-Here's a walkthrough of implemented user stories:
+Walkthroughs:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+*Compose character counts*
+<img src='http://i.imgur.com/kX7fNGT.gifv' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+*Compose and post*
+<img src='http://i.imgur.com/FqOLnAn.webm' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+*Timeline view*
+<img src='http://i.imgur.com/qjdGMfP.mp4' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+*Profile view with click through to another profile*
+<img src='http://i.imgur.com/iIdsjLD.webm' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+*Profile view 2*
+<img src='http://i.imgur.com/TR2z7bv.webm' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+*Swipe to refresh*
+<img src='http://i.imgur.com/YZkyWMC.webm' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
