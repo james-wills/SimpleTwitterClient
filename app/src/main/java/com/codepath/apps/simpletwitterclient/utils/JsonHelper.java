@@ -2,6 +2,7 @@ package com.codepath.apps.simpletwitterclient.utils;
 
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -15,10 +16,16 @@ public class JsonHelper {
   }
 
   public static long getLong(JSONObject j, String key) throws JSONException {
+    return getLong(j, key, -1L);
+  }
+
+
+
+  public static long getLong(JSONObject j, String key, long defaultVal) throws JSONException {
     if (j.has(key) && !j.isNull(key)) {
       return j.getLong(key);
     } else {
-      return -1L;
+      return defaultVal;
     }
   }
 
@@ -32,6 +39,22 @@ public class JsonHelper {
 
   public static boolean getBoolean(JSONObject j, String key) throws JSONException {
     return (boolean) getObject(j, key, false);
+  }
+
+  public static JSONObject getJSONObject(JSONObject j, String key) throws JSONException {
+    return getJSONObject(j, key, null);
+  }
+
+  public static JSONObject getJSONObject(JSONObject j, String key, Object defaultVal) throws JSONException {
+    return (JSONObject) getObject(j, key, defaultVal);
+  }
+
+  public static JSONArray getJsonArray(JSONObject j, String key) throws JSONException {
+    return getJsonArray(j, key, null);
+  }
+
+  public static JSONArray getJsonArray(JSONObject j, String key, Object defaultVal) throws JSONException {
+    return (JSONArray) getObject(j, key, defaultVal);
   }
 
   public static Object getObject(JSONObject j, String key, Object defaultVal) throws JSONException {

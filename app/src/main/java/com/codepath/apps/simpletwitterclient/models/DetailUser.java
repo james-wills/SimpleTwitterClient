@@ -29,6 +29,7 @@ public class DetailUser extends User {
   }
 
   public RichText getDescription() {
+    Log.i("JBDETAILUSER", description.toString());
     return description;
   }
 

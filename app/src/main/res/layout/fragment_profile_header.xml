@@ -68,7 +68,6 @@
       android:layout_alignParentLeft="true"
       android:layout_alignParentStart="true"
       android:layout_marginTop="@dimen/base_padding"
-      android:layout_marginBottom="@dimen/base_padding"
       android:linksClickable="true"
       style="@style/text_tweet"/>
 
@@ -92,7 +91,9 @@
       android:layout_toRightOf="@+id/ivLocationIcon"
       android:layout_toEndOf="@+id/ivLocationIcon"
       android:layout_marginLeft="@dimen/small_padding"
-      style="@style/text_very_small"/>
+      style="@style/text_very_small"
+      android:layout_marginTop="@dimen/base_padding"
+      />
 
     <ImageView
       android:layout_width="wrap_content"
@@ -160,7 +161,8 @@
       android:layout_alignTop="@+id/tvFriendsCount"
       android:gravity="center_vertical"
       android:layout_marginLeft="@dimen/small_padding"
-      android:layout_alignBottom="@+id/tvFriendsCount"/>
+      android:layout_alignBottom="@+id/tvFriendsCount"
+      />
 
 
   </RelativeLayout>

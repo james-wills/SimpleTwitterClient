@@ -16,7 +16,7 @@ import java.util.List;
  * Created by james_wills on 6/2/16.
  */
 public class RichText {
-  String baseText;
+  final String baseText;
   List<Mention> mentions;
   List<Hashtag> hashtags;
   List<TextUrl> urls;
@@ -39,17 +39,11 @@ public class RichText {
   }
 
   public RichText() {
-    this.baseText = "";
-    this.mentions = new ArrayList<>();
-    this.hashtags = new ArrayList<>();
-    this.urls = new ArrayList<>();
+    this("", new ArrayList<Mention>(), new ArrayList<Hashtag>(), new ArrayList<TextUrl>(), new ArrayList<MediaLink>());
   }
 
   public RichText(String baseText, List<TextUrl> urls) {
-    this();
-
-    this.baseText = baseText;
-    this.urls = urls;
+    this(baseText, new ArrayList<Mention>(), new ArrayList<Hashtag>(), urls, new ArrayList<MediaLink>());
   }
 
   public RichText(String baseText, List<Mention> mentions, List<Hashtag> hashtags, List<TextUrl> urls, List<MediaLink> media) {
@@ -69,16 +63,14 @@ public class RichText {
       return URLSpanNoUnderline.getSpannable("");
     }
 
-    List<Link> links = new ArrayList<>();
-    links.addAll(mentions);
-    links.addAll(hashtags);
-    links.addAll(urls);
-    links.addAll(media);
-    Collections.sort(links);
+    List<Link> links = getLinks(media);
+    if (links.size() == 0) {
+      return URLSpanNoUnderline.getSpannable(baseText);
+    }
+
     List<String> splitString = new ArrayList<>();
     int lastIndex = 0;
     for (Link l : links) {
-      Log.d("SUBSTRING", String.format("last: %d, start: %d, end: %d\noriginal: %s", lastIndex, l.startIndex, l.endIndex, baseText));
       splitString.add(baseText.substring(lastIndex, l.startIndex));
       splitString.add(baseText.substring(l.startIndex, l.endIndex));
       lastIndex = l.endIndex;
@@ -100,11 +92,34 @@ public class RichText {
         result += splitString.get(i);
       }
     }
-
     return URLSpanNoUnderline.getSpannable(result);
   }
 
+  public List<Link> getLinks(List<MediaLink> mediaLinks) {
+    List<Link> links = new ArrayList<>();
+    links.addAll(mentions);
+    links.addAll(hashtags);
+    links.addAll(urls);
+    links.addAll(mediaLinks);
+    Collections.sort(links);
+    return links;
+  }
+
   public String toString() {
-    return baseText;
+    String s = "RICHTEXT: " + baseText;
+    for (Mention m : mentions) {
+      s += "MENTION:\n" + m + "\n";
+    }
+
+    for (TextUrl t : urls) {
+      s += "URL:\n" + t + "\n";
+    }
+
+    for (Hashtag h : hashtags) {
+      s += "HASHTAG:\n" + h + "\n";
+    }
+
+    s += "\nEND_RICHTEXT\n\n\n";
+    return s;
   }
 }

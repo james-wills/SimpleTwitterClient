@@ -35,8 +35,8 @@
   </RelativeLayout>
 
   <ImageView
-    android:layout_width="@dimen/avi_width_and_height"
-    android:layout_height="@dimen/avi_width_and_height"
+    android:layout_width="@dimen/avi_width_and_height_tweet_list"
+    android:layout_height="@dimen/avi_width_and_height_tweet_list"
     android:id="@+id/ivProfileImage"
     android:layout_below="@id/retweetLayout"
     android:layout_alignParentLeft="true"
@@ -69,6 +69,17 @@
   <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    tools:text="8w"
+    android:id="@+id/tvDateCreated"
+    android:layout_alignParentRight="true"
+    android:layout_alignTop="@+id/tvName"
+    android:layout_alignBottom="@+id/tvName"
+    style="@style/text_very_small"
+    />
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:id="@+id/tvTweetText"
     android:layout_below="@+id/tvScreenName"
     android:layout_toRightOf="@+id/ivProfileImage"
@@ -77,34 +88,33 @@
     android:linksClickable="true"
     style="@style/text_tweet"
     tools:text="Dancing to Controlla is hard work! - someone who never been on the dance floor for mr vegas - bruk it down"/>
-  <LinearLayout
+
+  <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:id="@+id/flTweetImages"
+    android:visibility="visible"
     android:layout_below="@+id/tvTweetText"
-    android:id="@+id/llImages"
     android:layout_alignLeft="@+id/tvTweetText"
-    android:layout_alignStart="@+id/tvTweetText">
-  </LinearLayout>
-  <FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/flTweetImages1" />
-
-  <FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/flTweetImages2" />
-
-  <FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/flTweetImages3" />
-
-  <FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/flTweetImages4" />
-
+    android:layout_alignStart="@+id/tvTweetText"
+    android:layout_marginTop="@dimen/base_padding"
+    >
+    <include
+      layout="@layout/tweet_images_1"
+      android:id="@+id/tweet_images_1"
+      android:visibility="gone"/>
+    <include
+      layout="@layout/tweet_images_2"
+      android:id="@+id/tweet_images_2"
+      android:visibility="gone"/>
+    <include
+      layout="@layout/tweet_images_3"
+      android:id="@+id/tweet_images_3"
+      android:visibility="gone"/>
+    <include
+      layout="@layout/tweet_images_4"
+      android:id="@+id/tweet_images_4"
+      android:visibility="gone"/>
+  </FrameLayout>
 
 </RelativeLayout>

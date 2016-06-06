@@ -10,5 +10,6 @@
              android:layout_height="@dimen/tweet_image_height"
              android:id="@+id/tweet_1"
              android:src="@drawable/placeholder_tweet_1"
-             android:scaleType="centerCrop"/>
+             android:scaleType="centerCrop"
+    android:tag="@string/single"/>
 </LinearLayout>

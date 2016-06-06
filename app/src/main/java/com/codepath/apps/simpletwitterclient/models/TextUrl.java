@@ -52,7 +52,7 @@ public class TextUrl extends Link {
 
   @Override
   public String toString() {
-    return String.format("url: %s\ndisplayUrl: %s\nexpandedUrl: %s", url, displayUrl, expandedUrl);
+    return String.format("url: %s\ndisplayUrl: %s\nexpandedUrl: %s\n%s", url, displayUrl, expandedUrl, super.toString());
   }
 
 

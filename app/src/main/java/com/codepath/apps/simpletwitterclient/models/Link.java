@@ -45,4 +45,9 @@ public abstract class Link implements Comparable {
 
   public abstract String getLink();
   public abstract String getDisplayLink();
+
+  @Override
+  public String toString() {
+    return startIndex + " " + endIndex;
+  }
 }

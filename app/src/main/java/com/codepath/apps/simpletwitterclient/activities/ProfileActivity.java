@@ -10,10 +10,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.codepath.apps.simpletwitterclient.R;
+import com.codepath.apps.simpletwitterclient.adapters.TabbedPagerAdapter;
 import com.codepath.apps.simpletwitterclient.adapters.TweetsArrayAdapter;
 import com.codepath.apps.simpletwitterclient.fragments.FavoritesTimelineFragment;
 import com.codepath.apps.simpletwitterclient.fragments.HomeTimelineFragment;
@@ -23,14 +27,16 @@ import com.codepath.apps.simpletwitterclient.fragments.UserTimelineFragment;
 import com.codepath.apps.simpletwitterclient.models.User;
 import com.codepath.apps.simpletwitterclient.twitterapi.TwitterApplication;
 
+import java.util.Arrays;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ProfileActivity extends CaligraphyActivity {
+
   private String screenName;
   @BindView(R.id.viewPagerProfile) ViewPager viewPager;
   @BindView(R.id.tabStripProfile) PagerSlidingTabStrip tabStrip;
-  @BindView(R.id.profileToolbar) Toolbar toolbar;
 
   UserTimelineFragment userTimelineFragment;
   FavoritesTimelineFragment favoritesTimelineFragment;
@@ -41,7 +47,6 @@ public class ProfileActivity extends CaligraphyActivity {
     setContentView(R.layout.activity_profile);
     ButterKnife.bind(this);
 
-    setSupportActionBar(toolbar);
     screenName = getIntent().getStringExtra("screen_name");
 
     TweetsArrayAdapter.OnProfileClickListener listener = new TweetsArrayAdapter.OnProfileClickListener() {
@@ -61,50 +66,38 @@ public class ProfileActivity extends CaligraphyActivity {
     ft.replace(R.id.headerFragmentLayout, ProfileHeaderFragment.newInstance(screenName));
     ft.commit();
 
-    viewPager.setAdapter(new ProfilePagerAdapter(getSupportFragmentManager()));
+    TabbedPagerAdapter pagerAdapter = new TabbedPagerAdapter(
+        getSupportFragmentManager(),
+        Arrays.asList("Tweets", "Favorites"),
+        Arrays.asList((Fragment) userTimelineFragment, favoritesTimelineFragment)
+    );
+
+    viewPager.setAdapter(pagerAdapter);
     tabStrip.setViewPager(viewPager);
   }
 
+
+  @Override
+  public boolean dispatchTouchEvent(MotionEvent ev) {
+    /*
+      This fixes null point exception on certain scroll actions.
+      https://code.google.com/p/android/issues/detail?id=183166
+     */
+    try {
+      return super.dispatchTouchEvent(ev);
+    } catch (Exception e) {
+      return false;
+    }
+  }
+
   public void onClickProfile(String screenName) {
-    Log.d("JB", "clicked profile");
     if (TwitterApplication.currentUser != null &&
         screenName.equals(TwitterApplication.currentUser.getScreenName())) {
       return;
     }
-    Log.d("JB", "starting profile intent");
 
     Intent i = new Intent(ProfileActivity.this, ProfileActivity.class);
     i.putExtra("screen_name", screenName);
     startActivity(i);
-  }
-
-  public class ProfilePagerAdapter extends FragmentPagerAdapter {
-    private String[] tabTitles = { "Tweets", "Favorites" };
-
-    public ProfilePagerAdapter(FragmentManager f) {
-      super(f);
-    }
-
-    @Override
-    public Fragment getItem(int position) {
-      switch(position) {
-        case 0:
-          return UserTimelineFragment.newInstance(screenName);
-        case 1:
-          return FavoritesTimelineFragment.newInstance(screenName);
-        default:
-          return null;
-      }
-    }
-
-    @Override
-    public CharSequence getPageTitle(int position) {
-      return tabTitles[position];
-    }
-
-    @Override
-    public int getCount() {
-      return tabTitles.length;
-    }
   }
 }

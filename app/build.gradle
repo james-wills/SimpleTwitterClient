@@ -42,4 +42,7 @@ dependencies {
     compile 'uk.co.chrisjenx:calligraphy:2.2.0'
     compile 'jp.wasabeef:glide-transformations:2.0.1'
     compile 'com.android.support:percent:23.0.0'
+    compile 'org.ocpsoft.prettytime:prettytime:3.2.0.Final'
+    compile 'com.android.support:design:23.0.0'
+    compile 'com.android.support:support-annotations:23.0.0'
 }

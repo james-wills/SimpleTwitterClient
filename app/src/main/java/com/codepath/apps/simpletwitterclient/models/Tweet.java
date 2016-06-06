@@ -2,20 +2,31 @@ package com.codepath.apps.simpletwitterclient.models;
 
 import android.text.Spannable;
 import android.text.Spanned;
+import android.text.format.DateFormat;
 import android.util.Log;
+
+import com.codepath.apps.simpletwitterclient.utils.JsonHelper;
+import com.codepath.apps.simpletwitterclient.utils.TimeUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.ocpsoft.prettytime.Duration;
+import org.ocpsoft.prettytime.PrettyTime;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
  * Created by james_wills on 6/1/16.
  */
 public class Tweet {
+  public static final int MAX_CHARACTERS = 140;
   public static final long INVALID_TWEET_ID = -1;
+  final String TWITTER_DATE_FORMAT="EEE MMM dd HH:mm:ss ZZZZZ yyyy";
 
   private long tweetId;
   private User user;
@@ -37,6 +48,12 @@ public class Tweet {
 
   public String getCreatedAt() {
     return createdAt;
+  }
+
+  public String getTimeSinceCreation() throws ParseException {
+    Date tweetDate = TimeUtil.getTwitterApiDateFormat().parse(createdAt);
+    PrettyTime formatter = TimeUtil.getTimeFormatter();
+    return formatter.format(formatter.approximateDuration(tweetDate));
   }
 
   public RichText getTweetText() {
@@ -74,22 +91,19 @@ public class Tweet {
       List<Mention> mentions = Mention.fromJsonArray(entities.getJSONArray("user_mentions"));
       List<TextUrl> urls = TextUrl.fromJsonArray(entities.getJSONArray("urls"));
       List<Hashtag> hashtags = Hashtag.fromJsonArray(entities.getJSONArray("hashtags"));
+      List<MediaLink> baseMedia = MediaLink.mediaFromJsonArray(
+          JsonHelper.getJsonArray(entities, "media", new JSONArray()));
 
-      if (entities.has("media")) {
-        media = MediaLink.mediaFromJsonArray(entities.getJSONArray("media"));
-      } else {
-        media = new ArrayList<MediaLink>();
-      }
-      tweetText = new RichText(body, mentions, hashtags, urls, media);
+      JSONObject extendedEntities = JsonHelper.getJSONObject(o, "extended_entities", new JSONObject());
+
+      media = MediaLink.mediaFromJsonArray(
+          JsonHelper.getJsonArray(extendedEntities, "media", new JSONArray()));
+
+      tweetText = new RichText(body, mentions, hashtags, urls, baseMedia);
 
       retweetCount = o.getLong("retweet_count");
       favoriteCount = o.getLong("favorite_count");
-
-      if (o.has("in_reply_to_status_id") && !o.isNull("in_reply_to_status_id")) {
-        inReplyToStatusId = o.getLong("in_reply_to_status_id");
-      } else {
-        inReplyToStatusId = INVALID_TWEET_ID;
-      }
+      inReplyToStatusId = JsonHelper.getLong(o, "in_reply_to_status_id", INVALID_TWEET_ID);
 
       if (o.has("retweeted_status")) {
         retweetedStatus = new Tweet(o.getJSONObject("retweeted_status"));
@@ -104,7 +118,19 @@ public class Tweet {
 
   @Override
   public String toString() {
-    return tweetText.toString();
+    String s = "";
+    s += "User: " + user.toString();
+    s += "\ntweetText: " + tweetText.toString();
+    s += "\ncreatedAt: " + createdAt;
+    s += "\nRetweetCount: " + retweetCount;
+    s += "\nFavoriteCount: " + favoriteCount;
+    s += "\ninReplyToStatusId: " + inReplyToStatusId;
+    s += "\nmedia: ";
+    for (MediaLink m : media) {
+      s += "\nMEDIA LINK\n" + m.toString() + "\n";
+    }
+
+    return s;
   }
 
   public static List<Tweet> fromJSONArray(JSONArray arr) {
@@ -114,6 +140,7 @@ public class Tweet {
         Tweet t = new Tweet(arr.getJSONObject(i));
         if (t != null) {
           tweets.add(t);
+          Log.d("JBDEBUG", t.toString());
         }
       } catch (JSONException e) {
         e.printStackTrace();

@@ -48,4 +48,9 @@ public class Mention extends Link {
   public String getDisplayLink() {
     return String.format("@%s", screenName);
   }
+
+  @Override
+  public String toString() {
+    return "Screename: " + screenName + "\n" + super.toString();
+  }
 }

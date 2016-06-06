@@ -20,5 +20,22 @@
   <string name="example_name">Harold</string>
   <string name="example_url">twitch.tv/nintendoharold</string>
 
+  <!--Image Tags-->
+  <string name="top">T</string>
+  <string name="left">L</string>
+  <string name="right">R</string>
+  <string name="bottom">B</string>
+  <string name="top_left">TL</string>
+  <string name="top_right">TR</string>
+  <string name="bottom_left">BL</string>
+  <string name="bottom_right">BR</string>
+  <string name="single">S</string>
+
+
+  <string name="error_loading_tweets">Error loading tweets</string>
+  <string name="cancel">cancel</string>
+  <string name="action_tweet">Tweet</string>
+  <string name="char_limit_placeholder">140</string>
+  <string name="whats_happening">What\'s happening?</string>
 
 </resources>

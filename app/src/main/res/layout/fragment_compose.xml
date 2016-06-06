@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textAppearance="?android:attr/textAppearanceLarge"
+    android:text="@string/cancel"
+    android:id="@+id/tvCancelText"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    style="@style/text_action"
+    android:layout_marginLeft="@dimen/base_padding"
+    android:layout_marginRight="@dimen/base_padding"
+    android:layout_marginTop="@dimen/base_padding"
+    android:layout_alignBottom="@+id/ivAvi"
+    android:gravity="center_vertical"
+    />
+
+  <ImageView
+    android:layout_width="@dimen/avi_small_size"
+    android:layout_height="@dimen/avi_small_size"
+    android:id="@+id/ivAvi"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentEnd="false"
+    android:layout_alignParentTop="true"
+    android:layout_margin="@dimen/base_padding"
+    android:src="@drawable/avi_placeholder"
+    />
+
+  <View android:id="@+id/spacer"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacer_height"
+        android:layout_above="@+id/linearLayout"
+        android:background="@color/primary_light">
+  </View>
+
+  <LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical|right"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:id="@+id/linearLayout"
+    >
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAppearance="?android:attr/textAppearanceMedium"
+      android:text="@string/char_limit_placeholder"
+      android:id="@+id/tvCharacterCount"
+      />
+
+    <Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/action_tweet"
+      android:id="@+id/btnTweet"
+      android:background="@color/primary_dark"
+      android:textColor="@color/white"
+      android:layout_margin="@dimen/base_padding"
+      />
+  </LinearLayout>
+
+  <EditText
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:inputType="textMultiLine"
+    android:ems="10"
+    android:id="@+id/etTweetText"
+    android:layout_below="@+id/ivAvi"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentEnd="true"
+    android:hint="@string/whats_happening"
+    android:gravity="top"
+    android:layout_above="@+id/spacer"
+    android:padding="@dimen/base_padding"
+    android:background="@android:color/transparent"
+    />
+</RelativeLayout>

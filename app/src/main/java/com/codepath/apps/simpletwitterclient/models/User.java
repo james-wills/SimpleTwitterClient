@@ -28,8 +28,6 @@ public class User {
     return profileImageUrl;
   }
 
-
-
   public User(JSONObject json) {
     try {
       this.user_id = json.getLong("id");

@@ -1,5 +1,6 @@
 package com.codepath.apps.simpletwitterclient.models;
 
+import com.activeandroid.util.Log;
 import com.codepath.apps.simpletwitterclient.utils.JsonHelper;
 
 import org.json.JSONArray;
@@ -46,17 +47,34 @@ public class MediaLink extends TextUrl {
   }
 
   public static List<MediaLink> mediaFromJsonArray(JSONArray arr) {
-    List<MediaLink> hashtags = new ArrayList<>();
+    List<MediaLink> media = new ArrayList<>();
     for (int i = 0; i < arr.length(); i++) {
       try {
-        MediaLink hashtag = new MediaLink(arr.getJSONObject(i));
-        hashtags.add(hashtag);
+        MediaLink image = new MediaLink(arr.getJSONObject(i));
+        media.add(image);
       } catch(JSONException e) {
         e.printStackTrace();
         continue;
       }
     }
 
-    return hashtags;
+    try {
+      Log.d("JBDEBUG", arr.toString(2));
+    } catch (JSONException e) {
+
+    }
+    return media;
+  }
+
+  @Override
+  public String toString() {
+    String s = "";
+
+    s += "type: " + type + "\n";
+    s += "width: " + width + "\n";
+    s += "height: " + height + "\n";
+    s += "id: " + id + "\n";
+    s += "mediaUrl: " + mediaUrl + "\n";
+    return super.toString();
   }
 }

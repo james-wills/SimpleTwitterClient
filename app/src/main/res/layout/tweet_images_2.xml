@@ -17,7 +17,7 @@
              android:paddingRight="@dimen/image_padding"
              android:id="@+id/tweet_1"
              android:src="@drawable/placeholder_tweet_1"
-             android:scaleType="centerCrop"/>
+    android:tag="@string/left"/>
 
   <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
              android:layout_width="0dp"
@@ -29,5 +29,5 @@
              android:paddingLeft="@dimen/image_padding"
              android:id="@+id/tweet_2"
              android:src="@drawable/placeholder_tweet_2"
-             android:scaleType="centerCrop"/>
+    android:tag="@string/right"/>
 </android.support.percent.PercentRelativeLayout>

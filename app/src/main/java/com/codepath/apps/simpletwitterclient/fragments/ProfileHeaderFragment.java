@@ -37,6 +37,8 @@ public class ProfileHeaderFragment extends Fragment {
   @BindView(R.id.ivUserAvi) ImageView ivUserAvi;
   @BindView(R.id.ivLinkIcon) ImageView ivLinkIcon;
   @BindView(R.id.ivLocationIcon) ImageView ivLocationIcon;
+  @BindView(R.id.tvFollowersCount) TextView tvFollowersCount;
+  @BindView(R.id.tvFriendsCount) TextView tvFriendsCount;
 
   private TwitterClient client;
   private DetailUser user;
@@ -67,6 +69,7 @@ public class ProfileHeaderFragment extends Fragment {
 
   private void populateHeader() {
     tvBio.setText(user.getDescription().getStringHtml());
+    Log.i("JBUSERACTUAL", user.getDescription() + "");
     showOrHideView(tvBio, user.hasDescription());
 
     tvLocation.setText(user.getLocation());
@@ -79,6 +82,9 @@ public class ProfileHeaderFragment extends Fragment {
 
     tvProfileName.setText(user.getName());
     tvProfileScreenName.setText(user.getScreenName());
+
+    tvFriendsCount.setText(user.getFriendsCount() + "");
+    tvFollowersCount.setText(user.getFollowerCount() + "");
 
     Glide.with(getContext())
         .load(user.getProfileImageUrl())

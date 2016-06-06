@@ -3,6 +3,7 @@ package com.codepath.apps.simpletwitterclient.twitterapi;
 import android.content.Context;
 import android.util.Log;
 
+import com.bumptech.glide.request.target.ViewTarget;
 import com.codepath.apps.simpletwitterclient.R;
 import com.codepath.apps.simpletwitterclient.models.DetailUser;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -37,18 +38,24 @@ public class TwitterApplication extends com.activeandroid.app.Application {
 				.build()
 		);
 
-		client = (TwitterClient) TwitterClient.getInstance(TwitterClient.class, TwitterApplication.context);
-		client.getCurrentUser(new JsonHttpResponseHandler() {
-			@Override
-			public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-				currentUser = new DetailUser(response);
-			}
+		ViewTarget.setTagId(R.id.glide_tag);
 
-			@Override
-			public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
-				Log.d("DEBUG", errorResponse.toString());
-			}
-		});
+		client = (TwitterClient) TwitterClient.getInstance(TwitterClient.class, TwitterApplication.context);
+
+		if (client.isAuthenticated()) {
+			client.getCurrentUser(new JsonHttpResponseHandler() {
+				@Override
+				public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+					currentUser = new DetailUser(response);
+				}
+
+				@Override
+				public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
+					Log.d("DEBUG", errorResponse.toString());
+				}
+			});
+		}
+
 	}
 
 	public static TwitterClient getRestClient() {

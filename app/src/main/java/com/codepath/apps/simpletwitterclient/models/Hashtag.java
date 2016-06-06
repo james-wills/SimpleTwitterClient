@@ -46,4 +46,9 @@ public class Hashtag extends Link {
   public String getDisplayLink() {
     return text;
   }
+
+  @Override
+  public String toString() {
+    return String.format("text: %s\n%s", text, super.toString());
+  }
 }

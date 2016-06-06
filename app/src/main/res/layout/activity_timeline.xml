@@ -1,43 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.design.widget.CoordinatorLayout
+  android:id="@+id/main_content"
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
+  tools:context=".activities.TimelineActivity"
   android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  tools:context=".activities.TimelineActivity">
+  android:layout_height="match_parent">
 
-  <android.support.v7.widget.Toolbar
+  <android.support.design.widget.AppBarLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/toolbar"
-    android:theme="@style/ToolbarTheme"
-    android:background="@color/primary">
+    android:id="@+id/appBarLayout"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-  </android.support.v7.widget.Toolbar>
+    <android.support.v7.widget.Toolbar
+      android:id="@+id/toolbar"
+      android:layout_width="match_parent"
+      android:layout_height="?attr/actionBarSize"
+      android:background="?attr/colorPrimary"
+      app:layout_scrollFlags="scroll|enterAlways"/>
 
+    <com.astuetz.PagerSlidingTabStrip
+      android:id="@+id/tabStripHome"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/tab_height"
+      app:pstsShouldExpand="true"
+      app:pstsTextAllCaps="true"
+      app:pstsDividerColor="@color/white"
+      app:pstsIndicatorHeight="@dimen/tab_indicator_height"
+      app:pstsIndicatorColor="@color/primary"
+      android:background="@color/white"
+      app:pstsUnderlineHeight="@dimen/zerodp">
+    </com.astuetz.PagerSlidingTabStrip>
 
-  <com.astuetz.PagerSlidingTabStrip
-    android:id="@+id/tabStripHome"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/tab_height"
-    app:pstsShouldExpand="true"
-    app:pstsTextAllCaps="true"
-    app:pstsDividerColor="@color/white"
-    app:pstsIndicatorHeight="@dimen/tab_indicator_height"
-    app:pstsIndicatorColor="@color/primary"
-    android:background="@color/white"
-    android:layout_below="@+id/toolbar"
-    app:pstsUnderlineHeight="@dimen/zerodp"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true">
-  </com.astuetz.PagerSlidingTabStrip>
-
+  </android.support.design.widget.AppBarLayout>
   <android.support.v4.view.ViewPager
     android:id="@+id/viewPagerHome"
-    android:layout_below="@+id/tabStripHome"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/white">
-  </android.support.v4.view.ViewPager>
-</RelativeLayout>
+    android:layout_height="match_parent"
+
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    </android.support.v4.view.ViewPager>
+
+</android.support.design.widget.CoordinatorLayout>

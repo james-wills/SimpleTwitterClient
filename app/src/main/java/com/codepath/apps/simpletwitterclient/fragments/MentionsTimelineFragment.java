@@ -15,26 +15,13 @@ import org.json.JSONObject;
 import cz.msebera.android.httpclient.Header;
 
 public class MentionsTimelineFragment extends TweetsListFragment {
-  private TwitterClient client;
 
   @Override
   public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    client = TwitterApplication.getRestClient();
-    populateTimeline();
   }
 
-  private void populateTimeline() {
-    client.getMentionsTimeline(new JsonHttpResponseHandler() {
-      @Override
-      public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-        addAll(Tweet.fromJSONArray(response));
-      }
-
-      @Override
-      public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-        Log.d("DEBUG", errorResponse.toString());
-      }
-    });
+  public void populateTimeline(long maxId) {
+    client.getMentionsTimeline(maxId, new TweetResponseHandler());
   }
 }
