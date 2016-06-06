@@ -59,30 +59,22 @@ The following **additional** features are implemented:
 
 Walkthroughs:
 
-*Compose character counts*
-<img src='http://i.imgur.com/kX7fNGT.gifv' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+- [Compose character counts](http://i.imgur.com/kX7fNGT.gifv)
+- [Compose and post](http://i.imgur.com/FqOLnAn.webm)
+- [Timeline view](http://i.imgur.com/qjdGMfP.mp4)
+- [Profile view with click through to another profile](http://i.imgur.com/iIdsjLD.webm)
+- [Profile view 2](http://i.imgur.com/TR2z7bv.webm)
+- [swipe to refresh](http://i.imgur.com/YZkyWMC.webm)
+- [Flexible image layouts](http://i.imgur.com/lTImNKO.gifv)
 
-*Compose and post*
-<img src='http://i.imgur.com/FqOLnAn.webm' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-*Timeline view*
-<img src='http://i.imgur.com/qjdGMfP.mp4' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-*Profile view with click through to another profile*
-<img src='http://i.imgur.com/iIdsjLD.webm' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-*Profile view 2*
-<img src='http://i.imgur.com/TR2z7bv.webm' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-*Swipe to refresh*
-<img src='http://i.imgur.com/YZkyWMC.webm' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+GIF created with [CaptureGif](http://www.cockos.com/licecap/).
 
 ## Notes
 
 Describe any challenges encountered while building the app.
+- Keeping image corner crops consistent was difficult. The solution was to do a two part bitmap transform with Glide-transformations. First to crop the image to the view bounds, and the second to round the corners.
+- Coordinator layouts are a little more complicated with ListViews in PagerLayouts.
+- Parsing the tweet text for links is tricky, because the twitter api passes many types of links (url, displayurl, expandedurl, mediaurl).
 
 ## Open-source libraries used
 
