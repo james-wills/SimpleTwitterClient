@@ -6,7 +6,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -93,10 +92,6 @@ public abstract class TweetsListFragment extends Fragment {
   public void addAll(List<Tweet> tweets) {
     adapter.addAll(tweets);
     adapter.notifyDataSetChanged();
-  }
-
-  public void scrollToTop() {
-    lvTweets.setSelectionAfterHeaderView();
   }
 
   public long getMaxId() {

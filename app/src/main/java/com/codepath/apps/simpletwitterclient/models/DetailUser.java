@@ -1,13 +1,11 @@
 package com.codepath.apps.simpletwitterclient.models;
 
-import android.util.Log;
 
 import com.codepath.apps.simpletwitterclient.utils.JsonHelper;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,7 +27,6 @@ public class DetailUser extends User {
   }
 
   public RichText getDescription() {
-    Log.i("JBDETAILUSER", description.toString());
     return description;
   }
 
@@ -82,18 +79,12 @@ public class DetailUser extends User {
         List<TextUrl> urls = TextUrl.fromJsonArray(entities.getJSONObject("url").getJSONArray("urls"));
         if (urls.size() == 1) {
           TextUrl u = urls.get(0);
-          Log.d("JB", u.toString());
           url = new RichText(u.getUrl(), urls);
         }
       } else {
         url = new RichText();
       }
     } catch (JSONException e) {
-      try {
-        Log.d("DEBUG DETAIL USER", json.toString(2));
-      } catch (JSONException e2) {
-        e2.printStackTrace();
-      }
       e.printStackTrace();
     }
   }

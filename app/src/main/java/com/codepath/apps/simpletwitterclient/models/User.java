@@ -16,10 +16,6 @@ public class User {
     return name;
   }
 
-  public long getUser_id() {
-    return user_id;
-  }
-
   public String getScreenName() {
     return String.format("@%s", screenName);
   }

@@ -1,36 +1,22 @@
 package com.codepath.apps.simpletwitterclient.adapters;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.AsyncTask;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.DrawableRequestBuilder;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.codepath.apps.simpletwitterclient.R;
-import com.codepath.apps.simpletwitterclient.activities.ProfileActivity;
-import com.codepath.apps.simpletwitterclient.activities.TimelineActivity;
 import com.codepath.apps.simpletwitterclient.models.MediaLink;
 import com.codepath.apps.simpletwitterclient.models.Tweet;
-import com.codepath.apps.simpletwitterclient.twitterapi.TwitterApplication;
-import com.codepath.apps.simpletwitterclient.utils.TimeUtil;
-
-import java.lang.annotation.Target;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -59,8 +45,6 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
 
   @Override
   public View getView(int position, View convertView, ViewGroup parent) {
-    Log.d("POSITION", position + "");
-
     ViewHolder viewHolder;
     if (convertView == null) {
       convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_tweet, parent, false);

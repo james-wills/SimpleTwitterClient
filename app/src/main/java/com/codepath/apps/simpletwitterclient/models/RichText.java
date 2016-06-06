@@ -1,10 +1,6 @@
 package com.codepath.apps.simpletwitterclient.models;
 
-import android.text.Html;
 import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.util.Log;
 
 import com.codepath.apps.simpletwitterclient.utils.URLSpanNoUnderline;
 
@@ -24,18 +20,6 @@ public class RichText {
 
   public String getBaseText() {
     return baseText;
-  }
-
-  public List<Mention> getMentions() {
-    return mentions;
-  }
-
-  public List<Hashtag> getHashtags() {
-    return hashtags;
-  }
-
-  public List<TextUrl> getUrls() {
-    return urls;
   }
 
   public RichText() {

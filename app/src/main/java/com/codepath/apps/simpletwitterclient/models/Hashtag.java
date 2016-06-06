@@ -1,6 +1,5 @@
 package com.codepath.apps.simpletwitterclient.models;
 
-import android.util.Log;
 
 import com.codepath.apps.simpletwitterclient.utils.JsonHelper;
 

@@ -1,6 +1,5 @@
 package com.codepath.apps.simpletwitterclient.models;
 
-import android.util.Log;
 
 import com.codepath.apps.simpletwitterclient.utils.JsonHelper;
 
@@ -36,8 +35,6 @@ public class Mention extends Link {
 
     return hashtags;
   }
-
-
 
   @Override
   public String getLink() {

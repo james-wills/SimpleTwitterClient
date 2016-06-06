@@ -1,7 +1,5 @@
 package com.codepath.apps.simpletwitterclient.utils;
 
-import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -41,16 +39,8 @@ public class JsonHelper {
     return (boolean) getObject(j, key, false);
   }
 
-  public static JSONObject getJSONObject(JSONObject j, String key) throws JSONException {
-    return getJSONObject(j, key, null);
-  }
-
   public static JSONObject getJSONObject(JSONObject j, String key, Object defaultVal) throws JSONException {
     return (JSONObject) getObject(j, key, defaultVal);
-  }
-
-  public static JSONArray getJsonArray(JSONObject j, String key) throws JSONException {
-    return getJsonArray(j, key, null);
   }
 
   public static JSONArray getJsonArray(JSONObject j, String key, Object defaultVal) throws JSONException {

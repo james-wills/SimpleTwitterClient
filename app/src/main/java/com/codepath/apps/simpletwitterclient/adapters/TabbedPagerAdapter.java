@@ -4,9 +4,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.codepath.apps.simpletwitterclient.fragments.FavoritesTimelineFragment;
-import com.codepath.apps.simpletwitterclient.fragments.UserTimelineFragment;
-
 import java.util.List;
 
 /**

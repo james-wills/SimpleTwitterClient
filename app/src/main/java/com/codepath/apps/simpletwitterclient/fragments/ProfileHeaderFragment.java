@@ -1,6 +1,5 @@
 package com.codepath.apps.simpletwitterclient.fragments;
 
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -69,7 +68,6 @@ public class ProfileHeaderFragment extends Fragment {
 
   private void populateHeader() {
     tvBio.setText(user.getDescription().getStringHtml());
-    Log.i("JBUSERACTUAL", user.getDescription() + "");
     showOrHideView(tvBio, user.hasDescription());
 
     tvLocation.setText(user.getLocation());

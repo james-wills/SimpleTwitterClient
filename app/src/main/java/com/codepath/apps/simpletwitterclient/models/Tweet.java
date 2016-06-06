@@ -1,21 +1,14 @@
 package com.codepath.apps.simpletwitterclient.models;
 
-import android.text.Spannable;
-import android.text.Spanned;
-import android.text.format.DateFormat;
-import android.util.Log;
-
 import com.codepath.apps.simpletwitterclient.utils.JsonHelper;
 import com.codepath.apps.simpletwitterclient.utils.TimeUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.ocpsoft.prettytime.Duration;
 import org.ocpsoft.prettytime.PrettyTime;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -26,7 +19,6 @@ import java.util.List;
 public class Tweet {
   public static final int MAX_CHARACTERS = 140;
   public static final long INVALID_TWEET_ID = -1;
-  final String TWITTER_DATE_FORMAT="EEE MMM dd HH:mm:ss ZZZZZ yyyy";
 
   private long tweetId;
   private User user;
@@ -46,10 +38,6 @@ public class Tweet {
     return user;
   }
 
-  public String getCreatedAt() {
-    return createdAt;
-  }
-
   public String getTimeSinceCreation() throws ParseException {
     Date tweetDate = TimeUtil.getTwitterApiDateFormat().parse(createdAt);
     PrettyTime formatter = TimeUtil.getTimeFormatter();
@@ -58,18 +46,6 @@ public class Tweet {
 
   public RichText getTweetText() {
     return tweetText;
-  }
-
-  public long getRetweetCount() {
-    return retweetCount;
-  }
-
-  public long getFavoriteCount() {
-    return favoriteCount;
-  }
-
-  public long getInReplyToStatusId() {
-    return inReplyToStatusId;
   }
 
   public Tweet getRetweetedStatus() {
@@ -140,7 +116,6 @@ public class Tweet {
         Tweet t = new Tweet(arr.getJSONObject(i));
         if (t != null) {
           tweets.add(t);
-          Log.d("JBDEBUG", t.toString());
         }
       } catch (JSONException e) {
         e.printStackTrace();

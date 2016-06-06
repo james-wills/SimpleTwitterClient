@@ -2,29 +2,18 @@ package com.codepath.apps.simpletwitterclient.activities;
 
 import android.content.Intent;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MotionEvent;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.codepath.apps.simpletwitterclient.R;
 import com.codepath.apps.simpletwitterclient.adapters.TabbedPagerAdapter;
 import com.codepath.apps.simpletwitterclient.adapters.TweetsArrayAdapter;
 import com.codepath.apps.simpletwitterclient.fragments.FavoritesTimelineFragment;
-import com.codepath.apps.simpletwitterclient.fragments.HomeTimelineFragment;
-import com.codepath.apps.simpletwitterclient.fragments.MentionsTimelineFragment;
 import com.codepath.apps.simpletwitterclient.fragments.ProfileHeaderFragment;
 import com.codepath.apps.simpletwitterclient.fragments.UserTimelineFragment;
-import com.codepath.apps.simpletwitterclient.models.User;
 import com.codepath.apps.simpletwitterclient.twitterapi.TwitterApplication;
 
 import java.util.Arrays;

@@ -1,7 +1,5 @@
 package com.codepath.apps.simpletwitterclient.models;
 
-import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,14 +26,6 @@ public class TextUrl extends Link {
     return url;
   }
 
-  public String getDisplayUrl() {
-    return displayUrl;
-  }
-
-  public String getExpandedUrl() {
-    return expandedUrl;
-  }
-
   public static List<TextUrl> fromJsonArray(JSONArray arr) {
     List<TextUrl> urls = new ArrayList<>();
     for (int i = 0; i < arr.length(); i++) {
@@ -54,8 +44,6 @@ public class TextUrl extends Link {
   public String toString() {
     return String.format("url: %s\ndisplayUrl: %s\nexpandedUrl: %s\n%s", url, displayUrl, expandedUrl, super.toString());
   }
-
-
 
   @Override
   public String getLink() {

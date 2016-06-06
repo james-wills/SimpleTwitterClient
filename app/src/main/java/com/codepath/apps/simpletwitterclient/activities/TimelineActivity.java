@@ -1,23 +1,14 @@
 package com.codepath.apps.simpletwitterclient.activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.astuetz.PagerSlidingTabStrip;
@@ -25,25 +16,12 @@ import com.codepath.apps.simpletwitterclient.R;
 import com.codepath.apps.simpletwitterclient.adapters.TabbedPagerAdapter;
 import com.codepath.apps.simpletwitterclient.fragments.HomeTimelineFragment;
 import com.codepath.apps.simpletwitterclient.fragments.MentionsTimelineFragment;
-import com.codepath.apps.simpletwitterclient.fragments.TweetsListFragment;
-import com.codepath.apps.simpletwitterclient.models.DetailUser;
 import com.codepath.apps.simpletwitterclient.twitterapi.TwitterApplication;
-import com.codepath.apps.simpletwitterclient.twitterapi.TwitterClient;
 import com.codepath.apps.simpletwitterclient.adapters.TweetsArrayAdapter;
-import com.codepath.apps.simpletwitterclient.models.Tweet;
-import com.loopj.android.http.JsonHttpResponseHandler;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import cz.msebera.android.httpclient.Header;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class TimelineActivity extends CaligraphyActivity {
   @BindView(R.id.viewPagerHome) ViewPager viewPager;

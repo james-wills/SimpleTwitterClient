@@ -1,6 +1,5 @@
 package com.codepath.apps.simpletwitterclient.models;
 
-import com.activeandroid.util.Log;
 import com.codepath.apps.simpletwitterclient.utils.JsonHelper;
 
 import org.json.JSONArray;
@@ -58,11 +57,6 @@ public class MediaLink extends TextUrl {
       }
     }
 
-    try {
-      Log.d("JBDEBUG", arr.toString(2));
-    } catch (JSONException e) {
-
-    }
     return media;
   }
 
@@ -75,6 +69,6 @@ public class MediaLink extends TextUrl {
     s += "height: " + height + "\n";
     s += "id: " + id + "\n";
     s += "mediaUrl: " + mediaUrl + "\n";
-    return super.toString();
+    return s + super.toString();
   }
 }

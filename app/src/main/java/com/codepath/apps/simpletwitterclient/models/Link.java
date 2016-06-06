@@ -4,9 +4,6 @@ import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.Comparator;
 
 /**
  * Created by james_wills on 6/2/16.
@@ -22,14 +19,6 @@ public abstract class Link implements Comparable {
     } else {
       Log.d("DEBUG", "More than  2 indices\n" + indices.toString(2));
     }
-  }
-
-  public int getStartIndex() {
-    return startIndex;
-  }
-
-  public int getEndIndex() {
-    return endIndex;
   }
 
   @Override
