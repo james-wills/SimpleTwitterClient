@@ -5,10 +5,11 @@ import android.util.Log;
 
 import com.bumptech.glide.request.target.ViewTarget;
 import com.codepath.apps.simpletwitterclient.R;
-import com.codepath.apps.simpletwitterclient.models.DetailUser;
+import com.codepath.apps.simpletwitterclient.models.User;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
@@ -26,14 +27,14 @@ import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 public class TwitterApplication extends com.activeandroid.app.Application {
 	private static Context context;
 	private static TwitterClient client;
-	public static DetailUser currentUser;
+	public static User currentUser;
 
 	@Override
 	public void onCreate() {
 		super.onCreate();
 		TwitterApplication.context = this;
 		CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-				.setDefaultFontPath("Roboto-Light.ttf")
+				.setDefaultFontPath("fonts/Roboto-Light.ttf")
 				.setFontAttrId(R.attr.fontPath)
 				.build()
 		);
@@ -46,7 +47,11 @@ public class TwitterApplication extends com.activeandroid.app.Application {
 			client.getCurrentUser(new JsonHttpResponseHandler() {
 				@Override
 				public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-					currentUser = new DetailUser(response);
+					try {
+						currentUser = User.CREATOR.parse(response);
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
 				}
 
 				@Override

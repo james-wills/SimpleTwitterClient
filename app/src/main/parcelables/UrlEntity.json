@@ -1,0 +1,16 @@
+{
+  "do_json": true,
+  "package": "com.codepath.apps.simpletwitterclient.parcelModels",
+  "props": {
+    "String": [
+      "url",
+      "displayUrl",
+      "expandedUrl"
+    ],
+    "List<Integer>": [
+      "indices"
+    ]
+  },
+  "default_values": {
+  }
+}

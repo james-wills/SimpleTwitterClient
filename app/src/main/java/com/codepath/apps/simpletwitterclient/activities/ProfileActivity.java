@@ -1,10 +1,10 @@
 package com.codepath.apps.simpletwitterclient.activities;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
 import android.view.MotionEvent;
 
 import com.astuetz.PagerSlidingTabStrip;
@@ -23,12 +23,13 @@ import butterknife.ButterKnife;
 
 public class ProfileActivity extends CaligraphyActivity {
 
-  private String screenName;
-  @BindView(R.id.viewPagerProfile) ViewPager viewPager;
-  @BindView(R.id.tabStripProfile) PagerSlidingTabStrip tabStrip;
-
+  @BindView(R.id.viewPagerProfile)
+  ViewPager viewPager;
+  @BindView(R.id.tabStripProfile)
+  PagerSlidingTabStrip tabStrip;
   UserTimelineFragment userTimelineFragment;
   FavoritesTimelineFragment favoritesTimelineFragment;
+  private String screenName;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

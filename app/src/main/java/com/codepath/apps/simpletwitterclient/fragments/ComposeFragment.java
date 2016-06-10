@@ -3,6 +3,7 @@ package com.codepath.apps.simpletwitterclient.fragments;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,21 +35,29 @@ import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
  * Created by james_wills on 6/5/16.
  */
 public class ComposeFragment extends Fragment {
-  public interface ComposeListener {
-    public void onTweetSent();
-    public void onCancel();
-  }
-
-  @BindView(R.id.tvCharacterCount) TextView tvCharacterCount;
-  @BindView(R.id.tvCancelText) TextView tvCancelText;
-  @BindView(R.id.ivAvi) ImageView ivAvi;
-  @BindView(R.id.etTweetText) EditText etTweetText;
-  @BindView(R.id.btnTweet) Button btnTweet;
-
+  @BindView(R.id.tvCharacterCount)
+  TextView tvCharacterCount;
+  @BindView(R.id.tvCancelText)
+  TextView tvCancelText;
+  @BindView(R.id.ivAvi)
+  ImageView ivAvi;
+  @BindView(R.id.etTweetText)
+  EditText etTweetText;
+  @BindView(R.id.btnTweet)
+  Button btnTweet;
   private TwitterClient client;
   private ComposeListener listener;
 
-  @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+  public static ComposeFragment newInstance(String profileImageUrl) {
+    ComposeFragment headerFragment = new ComposeFragment();
+    Bundle args = new Bundle();
+    args.putString("profile_url", profileImageUrl);
+    headerFragment.setArguments(args);
+    return headerFragment;
+  }
+
+  @Override
+  public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_compose, container, false);
     ButterKnife.bind(this, view);
 
@@ -118,14 +127,14 @@ public class ComposeFragment extends Fragment {
 
   private void updateCharacterCount() {
     int charactersLeft = Tweet.MAX_CHARACTERS - getTweetText().length();
-    tvCharacterCount.setText("" + charactersLeft);
+    tvCharacterCount.setText(String.format("%d", charactersLeft));
 
     if (charactersLeft < 0) {
-      tvCharacterCount.setTextColor(getResources().getColor(R.color.error_text));
+      tvCharacterCount.setTextColor(ContextCompat.getColor(getContext(), R.color.error_text));
     } else if (charactersLeft < 10) {
-      tvCharacterCount.setTextColor(getResources().getColor(R.color.warning_text));
+      tvCharacterCount.setTextColor(ContextCompat.getColor(getContext(), R.color.warning_text));
     } else {
-      tvCharacterCount.setTextColor(getResources().getColor(R.color.primary_text));
+      tvCharacterCount.setTextColor(ContextCompat.getColor(getContext(), R.color.primary_text));
     }
   }
 
@@ -133,9 +142,9 @@ public class ComposeFragment extends Fragment {
     btnTweet.setEnabled(enabled);
 
     if (enabled) {
-      btnTweet.setBackgroundColor(getResources().getColor(R.color.primary_dark));
+      btnTweet.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.primary_dark));
     } else {
-      btnTweet.setBackgroundColor(getResources().getColor(R.color.primary_light));
+      btnTweet.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.primary_light));
     }
   }
 
@@ -148,11 +157,9 @@ public class ComposeFragment extends Fragment {
     return tweetLength > 0 && tweetLength < Tweet.MAX_CHARACTERS;
   }
 
-  public static ComposeFragment newInstance(String profileImageUrl) {
-    ComposeFragment headerFragment = new ComposeFragment();
-    Bundle args = new Bundle();
-    args.putString("profile_url", profileImageUrl);
-    headerFragment.setArguments(args);
-    return headerFragment;
+  public interface ComposeListener {
+    void onTweetSent();
+
+    void onCancel();
   }
 }

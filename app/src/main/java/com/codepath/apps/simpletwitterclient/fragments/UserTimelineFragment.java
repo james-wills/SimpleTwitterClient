@@ -8,17 +8,17 @@ import android.support.annotation.Nullable;
  */
 public class UserTimelineFragment extends TweetsListFragment {
 
-  @Override
-  public void onCreate(@Nullable Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-  }
-
   public static UserTimelineFragment newInstance(String screenName) {
     UserTimelineFragment userFragment = new UserTimelineFragment();
     Bundle args = new Bundle();
     args.putString("screen_name", screenName);
     userFragment.setArguments(args);
     return userFragment;
+  }
+
+  @Override
+  public void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
   }
 
   public void populateTimeline(long maxId) {

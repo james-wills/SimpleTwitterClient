@@ -13,8 +13,9 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.codepath.apps.simpletwitterclient.R;
-import com.codepath.apps.simpletwitterclient.models.MediaLink;
+import com.codepath.apps.simpletwitterclient.models.MediaEntity;
 import com.codepath.apps.simpletwitterclient.models.Tweet;
+
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,20 +29,12 @@ import jp.wasabeef.glide.transformations.RoundedCornersTransformation.CornerType
  * Created by james_wills on 6/1/16.
  */
 public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
-  public interface OnProfileClickListener {
-    public void onClick(String screenName);
-  }
-
-  public interface OnTweetClickListener {
-    public void onClick(long tweetId);
-  }
+  private OnProfileClickListener onProfileClickListener;
+  private OnTweetClickListener onTweetClickListener;
 
   public TweetsArrayAdapter(Context c, List<Tweet> tweets) {
     super(c, android.R.layout.simple_list_item_1, tweets);
   }
-
-  private OnProfileClickListener onProfileClickListener;
-  private OnTweetClickListener onTweetClickListener;
 
   @Override
   public View getView(int position, View convertView, ViewGroup parent) {
@@ -107,7 +100,7 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
     onProfileClickListener = listener;
   }
 
-  private void setTweetImages(ViewHolder vh, List<MediaLink> media) {
+  private void setTweetImages(ViewHolder vh, List<MediaEntity> media) {
     // Currently twitter only allows 4 images per tweet, but that may change in the future
     int numImages = Math.min(media.size(), 4);
 
@@ -116,7 +109,7 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
     for (int i = 0; i < numImages; i++) {
       ImageView iv = tweetImageViews.get(i);
       iv.setImageResource(android.R.color.transparent);
-      MediaLink link = media.get(i);
+      MediaEntity link = media.get(i);
 
       Glide.with(getContext())
           .load(link.getMediaUrl())
@@ -171,15 +164,31 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet> {
     }
   }
 
+  public interface OnProfileClickListener {
+    public void onClick(String screenName);
+  }
+
+  public interface OnTweetClickListener {
+    public void onClick(long tweetId);
+  }
+
   public class ViewHolder {
-    @BindView(R.id.ivProfileImage) ImageView ivProfileImage;
-    @BindView(R.id.tvScreenName) TextView tvScreenName;
-    @BindView(R.id.tvName) TextView tvName;
-    @BindView(R.id.tvTweetText) TextView tvBody;
-    @BindView(R.id.tvRetweetText) TextView tvRetweetText;
-    @BindView(R.id.retweetLayout) RelativeLayout rlRetweetLayout;
-    @BindView(R.id.flTweetImages) FrameLayout flTweetImages;
-    @BindView(R.id.tvDateCreated) TextView tvDateCreated;
+    @BindView(R.id.ivProfileImage)
+    ImageView ivProfileImage;
+    @BindView(R.id.tvScreenName)
+    TextView tvScreenName;
+    @BindView(R.id.tvName)
+    TextView tvName;
+    @BindView(R.id.tvTweetText)
+    TextView tvBody;
+    @BindView(R.id.tvRetweetText)
+    TextView tvRetweetText;
+    @BindView(R.id.retweetLayout)
+    RelativeLayout rlRetweetLayout;
+    @BindView(R.id.flTweetImages)
+    FrameLayout flTweetImages;
+    @BindView(R.id.tvDateCreated)
+    TextView tvDateCreated;
 
     List<ViewGroup> imageViewLayouts;
     private List<List<ImageView>> tweetImageViews;

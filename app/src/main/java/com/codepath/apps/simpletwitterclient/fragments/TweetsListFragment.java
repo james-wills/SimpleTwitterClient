@@ -17,9 +17,11 @@ import com.codepath.apps.simpletwitterclient.models.Tweet;
 import com.codepath.apps.simpletwitterclient.twitterapi.TwitterApplication;
 import com.codepath.apps.simpletwitterclient.twitterapi.TwitterClient;
 import com.codepath.apps.simpletwitterclient.utils.EndlessScrollListener;
+import com.codepath.apps.simpletwitterclient.utils.parcelgen.JsonUtil;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -33,19 +35,19 @@ import cz.msebera.android.httpclient.Header;
  * Created by james_wills on 6/1/16.
  */
 public abstract class TweetsListFragment extends Fragment {
-  public abstract void populateTimeline(long maxId);
-
-  @BindView(R.id.lvTweets) ListView lvTweets;
-  @BindView(R.id.swipeContainer) SwipeRefreshLayout swipeContainer;
+  public static final TwitterClient client = TwitterApplication.getRestClient();
+  @BindView(R.id.lvTweets)
+  ListView lvTweets;
+  @BindView(R.id.swipeContainer)
+  SwipeRefreshLayout swipeContainer;
 
   private TweetsArrayAdapter adapter;
   private ArrayList<Tweet> tweets;
-
-  public static final TwitterClient client = TwitterApplication.getRestClient();;
-
   private TweetsArrayAdapter.OnProfileClickListener profileClickListener;
-
+  ;
   private long lastRequestMaxId = Tweet.INVALID_TWEET_ID;
+
+  public abstract void populateTimeline(long maxId);
 
   @Nullable
   @Override
@@ -128,7 +130,12 @@ public abstract class TweetsListFragment extends Fragment {
   public class TweetResponseHandler extends JsonHttpResponseHandler {
     @Override
     public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
-      addAll(Tweet.fromJSONArray(response));
+      try {
+        addAll(JsonUtil.parseJsonList(response, com.codepath.apps.simpletwitterclient.models.Tweet.CREATOR));
+      } catch (JSONException e) {
+        e.printStackTrace();
+      }
+
       onTimeLinePopulated();
     }
 

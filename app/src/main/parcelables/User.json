@@ -1,0 +1,64 @@
+{
+  "do_json": true,
+  "package": "com.codepath.apps.simpletwitterclient.parcelModels",
+  "props": {
+    "String": [
+      "idStr",
+      "description",
+      "lang",
+      "location",
+      "name",
+      "profileBackgroundColor",
+      "profileBackgroundImageUrl",
+      "profileBackgroundImageUrlHttps",
+      "profileBannerUrl",
+      "profileImageUrl",
+      "profileImageUrlHttps",
+      "profileLinkColor",
+      "profileSidebarBorderColor",
+      "profileSidebarFillColor",
+      "profileTextColor",
+      "screenName",
+      "timeZone",
+      "url",
+      "withheldInCountries",
+      "withheldScope"
+    ],
+    "long": [
+      "id",
+      "favoritesCount",
+      "followersCount",
+      "friendsCount",
+      "listedCount",
+      "statusesCount",
+      "utcOffset"
+    ],
+    "boolean": [
+      "contributersEnabled",
+      "defaultProfile",
+      "defaultProfileImage",
+      "followRequestSent",
+      "following",
+      "geoEnabled",
+      "isTranslator",
+      "notifications",
+      "profileBackgroundTile",
+      "profileUseBackgroundImage",
+      "isProtected",
+      "showAllInlineMedia",
+      "verified"
+    ],
+    "Tweet": [ "status" ],
+    "UserEntities": [ "entities" ]
+  },
+  "json_map": {
+    "isProtected": "protected"
+  },
+  "default_values": {
+    "id": -1,
+    "favoritesCount": -1,
+    "followersCount": -1,
+    "listedCount": -1,
+    "utcOffset": -1
+  }
+}

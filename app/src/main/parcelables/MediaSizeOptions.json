@@ -1,0 +1,12 @@
+{
+  "do_json": true,
+  "package": "com.codepath.apps.simpletwitterclient.parcelModels",
+  "props": {
+    "MediaSize": [
+      "large",
+      "medium",
+      "small",
+      "thumb"
+    ]
+  }
+}

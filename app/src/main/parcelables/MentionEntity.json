@@ -1,0 +1,19 @@
+{
+  "do_json": true,
+  "package": "com.codepath.apps.simpletwitterclient.parcelModels",
+  "props": {
+    "String": [
+      "screenName",
+      "name",
+      "idStr"
+    ],
+    "long": [
+      "id"
+    ],
+    "List<Integer>": [
+      "indices"
+    ]
+  },
+  "default_values": {
+  }
+}

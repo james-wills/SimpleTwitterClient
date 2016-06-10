@@ -6,58 +6,86 @@ import com.codepath.apps.simpletwitterclient.utils.URLSpanNoUnderline;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
- * Created by james_wills on 6/2/16.
+ * Created by james_wills on 6/8/16.
  */
 public class RichText {
   final String baseText;
-  List<Mention> mentions;
-  List<Hashtag> hashtags;
-  List<TextUrl> urls;
+  List<MentionEntity> mentions;
+  List<HashtagEntity> hashtags;
+  List<UrlEntity> urls;
+  List<MediaEntity> media;
   Spannable stringHtml;
+
+  public RichText(String baseText,
+                  List<MentionEntity> mentions,
+                  List<HashtagEntity> hashtags,
+                  List<UrlEntity> urls,
+                  List<MediaEntity> media) {
+    if (baseText != null) {
+      this.baseText = baseText;
+    } else {
+      this.baseText = "";
+    }
+
+    this.mentions = mentions;
+    this.hashtags = hashtags;
+    this.urls = urls;
+    this.media = media;
+    this.stringHtml = createStringHtml();
+  }
+
+  public RichText(String baseText, List<UrlEntity> urls) {
+    this(baseText,
+        new ArrayList<MentionEntity>(),
+        new ArrayList<HashtagEntity>(),
+        urls,
+        new ArrayList<MediaEntity>());
+  }
+
+  public RichText(String baseText) {
+    this(baseText, new ArrayList<UrlEntity>());
+  }
 
   public String getBaseText() {
     return baseText;
   }
 
-  public RichText() {
-    this("", new ArrayList<Mention>(), new ArrayList<Hashtag>(), new ArrayList<TextUrl>(), new ArrayList<MediaLink>());
+  public List<MentionEntity> getMentions() {
+    return mentions;
   }
 
-  public RichText(String baseText, List<TextUrl> urls) {
-    this(baseText, new ArrayList<Mention>(), new ArrayList<Hashtag>(), urls, new ArrayList<MediaLink>());
+  public List<HashtagEntity> getHashtags() {
+    return hashtags;
   }
 
-  public RichText(String baseText, List<Mention> mentions, List<Hashtag> hashtags, List<TextUrl> urls, List<MediaLink> media) {
-    this.baseText = baseText;
-    this.mentions = mentions;
-    this.hashtags = hashtags;
-    this.urls = urls;
-    this.stringHtml = createStringHTML(media);
+  public List<UrlEntity> getUrls() {
+    return urls;
   }
 
   public Spannable getStringHtml() {
     return stringHtml;
   }
 
-  private Spannable createStringHTML(List<MediaLink> media) {
-    if (baseText.length() == 0) {
+  private Spannable createStringHtml() {
+    if (baseText == null || baseText.length() == 0) {
       return URLSpanNoUnderline.getSpannable("");
     }
 
-    List<Link> links = getLinks(media);
-    if (links.size() == 0) {
+    List<Entity> entities = getEntities();
+    if (entities.size() == 0) {
       return URLSpanNoUnderline.getSpannable(baseText);
     }
 
     List<String> splitString = new ArrayList<>();
     int lastIndex = 0;
-    for (Link l : links) {
-      splitString.add(baseText.substring(lastIndex, l.startIndex));
-      splitString.add(baseText.substring(l.startIndex, l.endIndex));
-      lastIndex = l.endIndex;
+    for (Entity e : entities) {
+      splitString.add(baseText.substring(lastIndex, e.getStart()));
+      splitString.add(baseText.substring(e.getStart(), e.getEnd()));
+      lastIndex = e.getEnd();
     }
 
     splitString.add(baseText.substring(lastIndex));
@@ -65,10 +93,10 @@ public class RichText {
     String result = "";
     int linkIndex = 0;
     for (int i = 0; i < splitString.size(); i++) {
-      boolean isLink = i % 2 != 0;
-      if (isLink) {
-        Link item = links.get(linkIndex);
-        if (!(item instanceof MediaLink)) {
+      boolean isEntity = i % 2 != 0;
+      if (isEntity) {
+        Entity item = entities.get(linkIndex);
+        if (!(item instanceof MediaEntity)) {
           result += String.format("<a href=\"%s\">%s</a>", item.getLink(), item.getDisplayLink());
         }
         linkIndex++;
@@ -76,34 +104,24 @@ public class RichText {
         result += splitString.get(i);
       }
     }
+
     return URLSpanNoUnderline.getSpannable(result);
   }
 
-  public List<Link> getLinks(List<MediaLink> mediaLinks) {
-    List<Link> links = new ArrayList<>();
+  public List<Entity> getEntities() {
+    List<Entity> links = new ArrayList<>();
     links.addAll(mentions);
     links.addAll(hashtags);
     links.addAll(urls);
-    links.addAll(mediaLinks);
-    Collections.sort(links);
+    links.addAll(media);
+
+    Collections.sort(links, new Comparator<Entity>() {
+      @Override
+      public int compare(Entity lhs, Entity rhs) {
+        return lhs.getStart() - rhs.getStart();
+      }
+    });
+
     return links;
-  }
-
-  public String toString() {
-    String s = "RICHTEXT: " + baseText;
-    for (Mention m : mentions) {
-      s += "MENTION:\n" + m + "\n";
-    }
-
-    for (TextUrl t : urls) {
-      s += "URL:\n" + t + "\n";
-    }
-
-    for (Hashtag h : hashtags) {
-      s += "HASHTAG:\n" + h + "\n";
-    }
-
-    s += "\nEND_RICHTEXT\n\n\n";
-    return s;
   }
 }

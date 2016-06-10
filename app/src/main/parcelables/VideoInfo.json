@@ -1,0 +1,18 @@
+{
+  "do_json": true,
+  "package": "com.codepath.apps.simpletwitterclient.parcelModels",
+  "props": {
+    "List<Integer>": [
+      "aspectRatio"
+    ],
+    "List<VideoVariant>": [
+      "variants"
+    ],
+    "long": [
+      "durationMillis"
+    ]
+  },
+  "default_values": {
+    "durationMillis": -1
+  }
+}

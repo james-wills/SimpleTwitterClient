@@ -1,0 +1,14 @@
+{
+  "do_json": true,
+  "package": "com.codepath.apps.simpletwitterclient.parcelModels",
+  "props": {
+    "boolean": [
+      "monetizable"
+    ],
+    "User": [
+      "sourceUser"
+    ]
+  },
+  "json_map": {
+  }
+}

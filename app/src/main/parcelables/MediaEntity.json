@@ -1,0 +1,42 @@
+{
+  "do_json": true,
+  "package": "com.codepath.apps.simpletwitterclient.parcelModels",
+  "props": {
+    "String": [
+      "idStr",
+      "mediaUrl",
+      "mediaUrlHttps",
+      "url",
+      "displayUrl",
+      "expandedUrl",
+      "sourceStatusIdStr",
+      "sourceUserIdStr",
+      "type"
+    ],
+    "long": [
+      "id",
+      "sourceStatusId",
+      "sourceUserId"
+    ],
+    "boolean": [
+      "truncated",
+      "isQuoteStatus",
+      "favorited",
+      "retweeted"
+    ],
+    "List<Integer>": [
+      "indices"
+    ],
+    "MediaSizeOptions": [
+      "sizes"
+    ],
+    "AdditionalMediaInfo": [
+      "additionalMediaInfo"
+    ]
+  },
+  "default_values": {
+    "id": -1,
+    "sourceStatusId": -1,
+    "sourceUserId": -1
+  }
+}

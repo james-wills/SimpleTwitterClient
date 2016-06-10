@@ -1,12 +1,11 @@
 package com.codepath.apps.simpletwitterclient.activities;
 
+import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import com.codepath.apps.simpletwitterclient.R;
 import com.codepath.apps.simpletwitterclient.fragments.ComposeFragment;
-import com.codepath.apps.simpletwitterclient.fragments.ProfileHeaderFragment;
 
 public class ComposeActivity extends AppCompatActivity {
 

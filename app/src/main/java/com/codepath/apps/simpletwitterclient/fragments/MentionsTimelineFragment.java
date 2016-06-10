@@ -2,6 +2,7 @@ package com.codepath.apps.simpletwitterclient.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+
 public class MentionsTimelineFragment extends TweetsListFragment {
 
   @Override

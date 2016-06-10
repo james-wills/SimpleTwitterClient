@@ -1,0 +1,46 @@
+{
+  "do_json": true,
+  "package": "com.codepath.apps.simpletwitterclient.parcelModels",
+  "props": {
+    "String": [
+      "idStr",
+      "createdAt",
+      "text",
+      "source",
+      "inReplyToScreenName",
+      "inReplyToStatusIdStr",
+      "inReplyToUserIdStr",
+      "lang"
+    ],
+    "long": [
+      "id",
+      "inReplyToStatusId",
+      "inReplyToUserId",
+      "favoriteCount",
+      "retweetCount"
+    ],
+    "boolean": [
+      "truncated",
+      "isQuoteStatus",
+      "favorited",
+      "retweeted"
+    ],
+    "Entities": [
+      "entities",
+      "extended_entities"
+    ],
+    "Tweet": [
+      "retweetedStatus"
+    ],
+    "User": [
+      "user"
+    ]
+  },
+  "default_values": {
+    "id": -1,
+    "inReplyToStatusId": -1,
+    "inReplyToUserId": -1,
+    "favoriteCount": -1,
+    "retweetCount": -1
+  }
+}

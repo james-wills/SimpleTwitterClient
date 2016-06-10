@@ -41,7 +41,7 @@
         <item name="android:textColor">@color/primary_text</item>
         <item name="android:textSize">@dimen/name_text_size</item>
         <item name="android:textStyle">bold</item>
-        <item name="fontPath">Roboto-Medium.ttf</item>
+        <item name="fontPath">fonts/Roboto-Medium.ttf</item>
     </style>
 
     <style name="text_very_small">

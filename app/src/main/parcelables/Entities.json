@@ -1,0 +1,24 @@
+{
+  "do_json": true,
+  "package": "com.codepath.apps.simpletwitterclient.parcelModels",
+  "props": {
+    "List<MediaEntity>": [
+      "media"
+    ],
+    "List<HashtagEntity>": [
+      "hashtags"
+    ],
+    "List<UrlEntity>": [
+      "urls"
+    ],
+    "List<SymbolEntity>": [
+      "symbols"
+    ],
+    "List<MentionEntity>": [
+      "mentions"
+    ]
+  },
+  "json_map": {
+    "mentions": "user_mentions"
+  }
+}
